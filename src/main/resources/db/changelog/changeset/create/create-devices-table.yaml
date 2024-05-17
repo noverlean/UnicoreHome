@@ -1,0 +1,68 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-devices-table
+      author: noverlin
+      changes:
+        - createTable:
+            tableName: devices
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: environment_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_devices_environment
+                    references: environments(id)
+              - column:
+                  name: hub_id
+                  type: bigint
+                  constraints:
+                    nullable: true
+                    foreignKeyName: fk_hubs_devices
+                    references: hubs(id)
+              - column:
+                  name: lightning_id
+                  type: bigint
+                  constraints:
+                    nullable: true
+                    foreignKeyName: fk_lightnings_devices
+                    references: lightnings(id)
+              - column:
+                  name: switch_id
+                  type: bigint
+                  constraints:
+                    nullable: true
+                    foreignKeyName: fk_switches_devices
+                    references: switches(id)
+              - column:
+                  name: access_code
+                  type: varchar(16)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(55)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: color
+                  type: varchar(55)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ip
+                  type: varchar(16)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: changeTime
+                  type: timestamp
+                  constraints:
+                    nullable: true

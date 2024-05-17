@@ -1,0 +1,30 @@
+databaseChangeLog:
+#  - include:
+#      file: db/changelog/changeset/init.yaml
+  - include:
+      file: db/changelog/changeset/create/create-environments-table.yaml
+  - include:
+      file: db/changelog/changeset/create/create-roles-table.yaml
+  - include:
+      file: db/changelog/changeset/create/create-users-table.yaml
+  - include:
+      file: db/changelog/changeset/create/create-users-roles-table.yaml
+  - include:
+      file: db/changelog/changeset/create/create-hubs-table.yaml
+  - include:
+      file: db/changelog/changeset/create/create-lightnings-table.yaml
+  - include:
+      file: db/changelog/changeset/create/create-switches-table.yaml
+  - include:
+      file: db/changelog/changeset/create/create-events-table.yaml
+  - include:
+      file: db/changelog/changeset/create/create-devices-table.yaml
+  - include:
+      file: db/changelog/changeset/create/create-tickets-table.yaml
+
+  - include:
+      file: db/changelog/changeset/insert/insert-roles.xml
+  - include:
+      file: db/changelog/changeset/insert/insert-users.xml
+  - include:
+      file: db/changelog/changeset/insert/insert-users-roles.xml

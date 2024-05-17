@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-hubs-table
+      author: noverlin
+      changes:
+        - createTable:
+            tableName: hubs
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false

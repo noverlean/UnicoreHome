@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-users-table
+      author: noverlin
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: environment_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_users_environments
+                    references: environments(id)
+              - column:
+                  name: email
+                  type: varchar(256)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false

@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-switches-table
+      author: noverlin
+      changes:
+        - createTable:
+            tableName: switches
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: active
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: inversive
+                  type: boolean
+                  constraints:
+                    nullable: false

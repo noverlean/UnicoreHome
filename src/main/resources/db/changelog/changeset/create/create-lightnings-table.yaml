@@ -1,0 +1,57 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-lightnings-table
+      author: noverlin
+      changes:
+        - createTable:
+            tableName: lightnings
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: type
+                  type: varchar(55)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: kind
+                  type: varchar(55)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: length
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: length_t
+                  type: int
+              - column:
+                  name: length_b
+                  type: int
+              - column:
+                  name: length_l
+                  type: int
+              - column:
+                  name: length_r
+                  type: int
+              - column:
+                  name: style
+                  type: varchar(55)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: brightness
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: speed
+                  type: int
+                  constraints:
+                    nullable: false

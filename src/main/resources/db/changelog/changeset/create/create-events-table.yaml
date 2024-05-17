@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-events-table
+      author: noverlin
+      changes:
+        - createTable:
+            tableName: events
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: environment_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_environment_devices
+                    references: environments(id)
+              - column:
+                  name: device_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_events_devices
+                    references: environments(id)
+              - column:
+                  name: timestamp
+                  type: timestamp
+                  constraints:
+                    nullable: true
+              - column:
+                  name: when_user_near
+                  type: boolean
+                  constraints:
+                    nullable: false

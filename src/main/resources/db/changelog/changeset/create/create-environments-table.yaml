@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-environments-table
+      author: noverlin
+      changes:
+        - createTable:
+            tableName: environments
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(55)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: access_code
+                  type: varchar(16)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: creator_email
+                  type: varchar(256)
+                  constraints:
+                    nullable: false

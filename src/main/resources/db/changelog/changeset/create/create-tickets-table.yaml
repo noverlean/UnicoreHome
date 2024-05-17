@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-tickets-table
+      author: noverlin
+      changes:
+        - createTable:
+            tableName: tickets
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar(256)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: content
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: changeTimestamp
+                  type: timestamp
+                  constraints:
+                    nullable: true
+              - column:
+                  name: support_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_tickets_support
+                    references: users(id)
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_tickets_user
+                    references: users(id)

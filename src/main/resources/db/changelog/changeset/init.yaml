@@ -1,0 +1,6 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-database
+      author: noverlin
+      changes:
+        - createDatabase:
