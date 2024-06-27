@@ -32,6 +32,12 @@ public class Lightning {
     @Column(name = "speed")
     private Integer speed;
 
+    @Column(name = "step")
+    private Integer step;
+
+    @Column(name = "color")
+    private String color;
+
     @Column(name = "length")
     private Integer length;
 
@@ -47,12 +53,14 @@ public class Lightning {
     @Column(name = "length_r")
     private Integer length_r;
 
-    public Lightning(String type, String kind, String style, Integer brightness, Integer speed, Integer length, Integer length_t, Integer length_b, Integer length_l, Integer length_r){
+    public Lightning(String type, String kind, String style, Integer brightness, Integer speed, String color, Integer step, Integer length, Integer length_t, Integer length_b, Integer length_l, Integer length_r){
         this.type = type;
         this.kind = kind;
         this.style = style;
         this.brightness = brightness;
         this.speed = speed;
+        this.color = color;
+        this.step = step;
         this.length = length;
         this.length_t = length_t;
         this.length_b = length_b;
@@ -61,19 +69,19 @@ public class Lightning {
     }
 
     public Lightning(String type, String kind, Integer length_t, Integer length_b, Integer length_l, Integer length_r){
-        this(type, kind, "fade", 100, 1, (length_t + length_b + length_l + length_r), length_t, length_b, length_l, length_r);
+        this(type, kind, "fade", 100, 1, "#ffffff", 1, (length_t + length_b + length_l + length_r), length_t, length_b, length_l, length_r);
     }
 
     public Lightning(String type, String kind, Integer length){
-        this(type, kind, "fade", 100, 1, length, length, 0, 0, 0);
+        this(type, kind, "fade", 100, 1, "#ffffff", 1, length, length, 0, 0, 0);
     }
 
     public Lightning(String type, String kind){
-        this(type, kind, "fade", 100, 1, 10, 10, 0, 0, 0);
+        this(type, kind, "fade", 100, 1, "#ffffff", 1, 10, 10, 0, 0, 0);
     }
 
     public Lightning(){
-        this("sun", "WS2811", "fade", 100, 1, 10, 10, 0, 0, 0);
+        this("sun", "WS2811", "fade", 100, 1, "#ffffff", 1, 10, 10, 0, 0, 0);
     }
 
     public void print()
@@ -85,6 +93,8 @@ public class Lightning {
         System.out.println("Style       : " + getStyle());
         System.out.println("Brightness  : " + getBrightness());
         System.out.println("Speed       : " + getSpeed());
+        System.out.println("Color       : " + getColor());
+        System.out.println("Step        : " + getStep());
         System.out.println("Length      : " + getLength());
         System.out.println("Length_t    : " + getLength_t());
         System.out.println("Length_b    : " + getLength_b());

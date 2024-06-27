@@ -17,6 +17,8 @@ public class LightningDto {
     private String style;
     private Integer brightness;
     private Integer speed;
+    private Integer step;
+    private String color;
     private Integer length;
     private Integer length_t;
     private Integer length_b;

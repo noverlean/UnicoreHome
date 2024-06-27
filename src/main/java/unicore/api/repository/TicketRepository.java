@@ -15,6 +15,6 @@ public interface TicketRepository extends CrudRepository<Ticket, Long> {
     @Override
     List<Ticket> findAll();
 
-    @Query("SELECT tic FROM Ticket tic WHERE tic.support is null ORDER BY tic.changeTimestamp DESC")
+    @Query("SELECT tic FROM Ticket tic WHERE tic.support is null ORDER BY tic.changeTimestamp ASC")
     List<Ticket> findAllFree();
 }

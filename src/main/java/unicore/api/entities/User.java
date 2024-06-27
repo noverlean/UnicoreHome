@@ -28,6 +28,7 @@ public class User {
     private Environment environment;
 
     @OneToMany (mappedBy="user", fetch=FetchType.EAGER)
+    @OrderBy("changeTimestamp DESC")
     private Collection<Ticket> tickets;
 
     @OneToMany (mappedBy="support", fetch=FetchType.EAGER)

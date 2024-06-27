@@ -41,6 +41,8 @@ public class SecurityConfig {
             .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
             .authorizeHttpRequests(requests -> requests
                     .requestMatchers("/user").authenticated()
+                    .requestMatchers("/users").hasRole("ADMIN")
+
                     .requestMatchers("/environment/create").authenticated()
                     .requestMatchers("/environment/add").authenticated()
                     .requestMatchers("/environment/add/confirm").authenticated()
@@ -50,6 +52,7 @@ public class SecurityConfig {
                     .requestMatchers("/device/ip").authenticated()
                     .requestMatchers("/device/lightning/set").authenticated()
                     .requestMatchers("/device/switch/set").authenticated()
+
                     .requestMatchers("/ticket/create").authenticated()
                     .requestMatchers("/tickets").hasRole("ADMIN")
                     .requestMatchers("/ticket/accept/{id}").hasRole("ADMIN")

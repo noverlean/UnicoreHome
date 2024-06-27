@@ -19,6 +19,7 @@ import unicore.api.dto.RegistrationCredentials;
 import unicore.api.dto.UserEmailCodeDto;
 import unicore.api.dto.tickets.TicketContent;
 import unicore.api.entities.Environment;
+import java.util.ArrayList;
 import unicore.api.entities.Ticket;
 import unicore.api.entities.User;
 import unicore.api.repository.TicketRepository;
@@ -106,9 +107,21 @@ public class TicketService {
     public ResponseEntity<User> updateTicket(String email, Long id, String content) throws JsonProcessingException {
         User user = userService.getUser(email);
         Ticket ticket = ticketRepository.findById(id).orElse(null);
-        if (ticket == null || !ticket.getSupport().equals(user))
+        if (ticket == null)
         {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        try {
+            boolean isUser = ticket.getUser().equals(user);
+            boolean isSupport = ticket.getSupport().equals(user);
+            if (!(isUser || isSupport))
+            {
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e);
         }
 
         TicketContent ticketContent = new TicketContent(
@@ -119,19 +132,27 @@ public class TicketService {
 
         List<TicketContent> messages = mapper.readValue(ticket.getContent(), new TypeReference<>(){});
         messages.add(ticketContent);
-//        messages.sort((t1, t2) -> t1.getSendTime().compareTo(t2.getSendTime()) * -1);
         String json = mapper.writeValueAsString(messages);
 
         ticket.setContent(json);
+        ticket.setChangeTimestamp(new Date());
         ticket = ticketRepository.save(ticket);
 
-        if (user.getTickets().remove(ticket))
-            user.getTickets().add(ticket);
-        if (user.getSupportTickets().remove(ticket))
-            user.getSupportTickets().add(ticket);
-        user = userRepository.save(user);
+        List<Ticket> tickets = new ArrayList<>(user.getTickets().stream().toList());
+        List<Ticket> supportTickets = new ArrayList<>(user.getSupportTickets().stream().toList());
 
-        return ResponseEntity.ok(user);
+        if (tickets.remove(ticket))
+        {
+            tickets.add(0, ticket);
+            user.setTickets(tickets);
+        }
+        if (supportTickets.remove(ticket))
+        {
+            supportTickets.add(0, ticket);
+            user.setSupportTickets(supportTickets);
+        }
+
+        return ResponseEntity.ok(userRepository.save(user));
     }
 
 }

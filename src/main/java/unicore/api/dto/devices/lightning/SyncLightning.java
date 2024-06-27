@@ -16,6 +16,8 @@ public class SyncLightning {
     private String style;
     private Integer brightness;
     private Integer speed;
+    private Integer step;
+    private String color;
     private Integer length;
     private Integer length_t;
     private Integer length_b;
@@ -30,6 +32,8 @@ public class SyncLightning {
         this.style = lightningDto.getStyle();
         this.brightness = lightningDto.getBrightness();
         this.speed = lightningDto.getSpeed();
+        this.step = lightningDto.getStep();
+        this.color = lightningDto.getColor();
         this.length = lightningDto.getLength();
         this.length_t = lightningDto.getLength_t();
         this.length_b = lightningDto.getLength_b();
@@ -45,6 +49,8 @@ public class SyncLightning {
         lightningDto.setStyle(style);
         lightningDto.setBrightness(brightness);
         lightningDto.setSpeed(speed);
+        lightningDto.setStep(step);
+        lightningDto.setColor(color);
         lightningDto.setLength(length);
         lightningDto.setLength_t(length_t);
         lightningDto.setLength_b(length_b);

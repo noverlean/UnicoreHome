@@ -77,7 +77,7 @@ public class DeviceService {
             case "switch" -> {
                 device.setSwitch_(switchRepository.save(new Switch()));
             }
-            default -> throw new IllegalStateException("Unexpected value: " + device);
+            default -> throw new IllegalStateException("Unexpected value!");
         };
         device.print();
         device = deviceRepository.save(device);
@@ -153,7 +153,8 @@ public class DeviceService {
         int comparison = device.getChangeTime().compareTo(boardLastUpdate);
 
         if (comparison < 0){ // if DB data is NOT actually
-            device.setLightning(lightningMapper.dtoToModel(syncLightning.getAsLightningDto()));
+            Lightning savedLightning = lightningRepository.save(lightningMapper.dtoToModel(syncLightning.getAsLightningDto()));
+            device.setLightning(savedLightning);
             device.setIp(syncLightning.getIp());
             device.setChangeTime(boardLastUpdate);
 

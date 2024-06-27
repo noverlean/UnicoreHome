@@ -1,7 +1,11 @@
 package unicore.api.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,8 +18,11 @@ import unicore.api.dto.RegistrationCredentials;
 import unicore.api.dto.UserEmailCodeDto;
 import unicore.api.entities.Environment;
 import unicore.api.entities.User;
+import unicore.api.mappers.UserMapper;
 import unicore.api.repository.UserRepository;
 
+import java.io.ByteArrayInputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -23,6 +30,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UserService implements UserDetailsService {
     private UserRepository userRepository;
+    private UserMapper userMapper;
     private RoleService roleService;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -78,6 +86,26 @@ public class UserService implements UserDetailsService {
         User user = getUser(email);
         user.setEnvironment(environment);
         return userRepository.save(user);
+    }
+
+    public List<User> getAllUsers(String email) {
+        return (List<User>) userRepository.findAll();
+    }
+
+    public User getUserById(Long id) {
+        return userRepository.findById(id).orElseGet(null);
+    }
+
+    public ResponseEntity<InputStreamResource> downloadUser(Long id) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        String json = objectMapper.writeValueAsString(getUserById(id));
+
+        ByteArrayInputStream stream = new ByteArrayInputStream(json.getBytes(StandardCharsets.UTF_8));
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .header("Content-Disposition", "attachment; filename=data.txt")
+                .body(new InputStreamResource(stream));
     }
 
 
