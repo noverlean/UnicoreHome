@@ -1,3 +1,5 @@
+## 🌐 Языки / Languages
+
 - 🇬🇧 [English](README.md)
 
 # 🏠 UnicoreHome — Курсовой проект умного дома на Spring + React + Arduino
