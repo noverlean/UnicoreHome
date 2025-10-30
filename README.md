@@ -1,6 +1,5 @@
 ## 🌐 Языки / Languages
 
-- 🇬🇧 [English](README.md)
 - 🇷🇺 [Русский](README.ru.md)
 
 # 🏠 UnicoreHome — A Smart Home Capstone Project with Spring + React + Arduino
