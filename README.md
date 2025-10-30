@@ -1,71 +1,76 @@
-# 🏠 UnicoreHome — Курсовой проект умного дома на Spring + React + Arduino
+## 🌐 Языки / Languages
 
-UnicoreHome — это полнофункциональное веб- и хардвэйр-приложение для управления умным домом. Проект был реализован как курсовая работа и включает серверную часть на Java Spring Framework, клиентскую часть на React, а также устройства на базе ESP8266, запрограммированные на C++ с использованием Arduino. Система позволяет пользователям управлять своими цифровыми окружениями, подключать устройства, взаимодействовать с другими пользователями и обращаться в службу поддержки.
+- 🇬🇧 [English](README.md)
+- 🇷🇺 [Русский](README.ru.md)
+
+# 🏠 UnicoreHome — A Smart Home Capstone Project with Spring + React + Arduino
+
+UnicoreHome is a full-featured web and hardware application for managing smart home environments. Developed as a capstone project, it includes a backend built with Java Spring Framework, a frontend developed in React, and hardware devices based on ESP8266 programmed in C++ using Arduino. The system allows users to manage digital environments, connect smart devices, collaborate with other users, and interact with a support service.
 
 ---
 
-## 🌐 Архитектура
+## 🌐 Architecture
 
 - 🖥️ Backend: Java 17, Spring Boot, Spring Security, Hibernate, Liquibase, PostgreSQL
-- 📬 Email: FreeMarker для шаблонных писем (верификация, уведомления)
-- 💻 Frontend: React (разрабатывался другим участником проекта)
+- 📬 Email: FreeMarker for templated emails (verification, notifications)
+- 💻 Frontend: React (developed by another contributor)
 - 📡 Hardware: ESP8266 + Arduino C++
-- 🔁 Коммуникация: Short polling (обход NAT и CORS preflight)
-- 🐳 Docker: Контейнеризация backend и базы данных
+- 🔁 Communication: Short polling (to bypass NAT and CORS preflight restrictions)
+- 🐳 Docker: Containerization of backend and database
 
 ---
 
-## 🔧 Функциональность
+## 🔧 Features
 
-### 👤 Пользовательская часть
+### 👤 User Functionality
 
-- Регистрация нового пользователя
-- Подтверждение email через код, отправляемый на почту
-- Авторизация и выход из системы
-- Восстановление пароля (в перспективе)
-- Просмотр и редактирование профиля
+- User registration
+- Email verification via code sent to inbox
+- Login and logout
+- Password recovery (planned)
+- Profile viewing and editing
 
-### 🏘️ Окружения
+### 🏘️ Environments
 
-- Создание одного или нескольких окружений (например, "Дом", "Офис", "Дача")
-- Приглашение других пользователей в своё окружение
-- Принятие приглашений и вступление в чужие окружения
-- Управление участниками окружения (удаление, назначение ролей)
-- Просмотр списка всех окружений, в которых участвует пользователь
+- Create one or more environments (e.g., "Home", "Office", "Cottage")
+- Invite other users to your environment
+- Accept invitations and join other users' environments
+- Manage environment members (remove, assign roles)
+- View all environments the user is part of
 
-### 🔌 Устройства
+### 🔌 Devices
 
-- Подключение устройств умного дома к окружению
-- Поддержка нескольких типов устройств:
-  - 💡 Световая лампа
-  - 🔦 Точечный свет
-  - 🔘 Переключатель
-- Привязка устройства к Wi-Fi с доступом в интернет
-- Коммуникация с сервером через short polling (обход NAT и CORS)
-- Управление состоянием устройств из интерфейса (вкл/выкл, яркость и т.д.)
-- Отображение текущего состояния устройства в реальном времени
-- Удаление и повторное подключение устройств
+- Connect smart home devices to an environment
+- Support for multiple device types:
+  - 💡 Light bulb
+  - 🔦 Spot light
+  - 🔘 Switch
+- Connect devices to a Wi-Fi network with internet access
+- Communicate with the server via short polling (NAT/CORS-safe)
+- Control device state via UI (on/off, brightness, etc.)
+- Display real-time device status
+- Remove and reconnect devices
 
-### 🧑‍🤝‍🧑 Взаимодействие между пользователями
+### 🧑‍🤝‍🧑 User Collaboration
 
-- Приглашение пользователей по email в окружение
-- Принятие/отклонение приглашений
-- Просмотр списка участников окружения
-- Управление правами доступа (в перспективе)
+- Invite users to environments via email
+- Accept or decline invitations
+- View list of environment participants
+- Manage access rights (planned)
 
-### 🆘 Служба поддержки
+### 🆘 Support System
 
-- Создание тикета (заявки) в поддержку
-- Просмотр всех своих заявок
-- Переписка с администратором в рамках тикета
-- Закрытие заявки пользователем
-- История заявок сохраняется и доступна для просмотра
+- Create support tickets
+- View all personal tickets
+- Chat with an administrator within the ticket thread
+- Close tickets (tickets remain archived and viewable)
+- Persistent ticket history
 
-### 📬 Email-уведомления
+### 📬 Email Notifications
 
-- Отправка кода подтверждения при регистрации
-- Уведомления о приглашениях в окружение
-- Уведомления о новых сообщениях в тикете
-- Шаблоны писем оформлены с помощью FreeMarker
+- Verification code sent during registration
+- Notifications for environment invitations
+- Notifications for new messages in support tickets
+- Email templates styled with FreeMarker
 
 ---
