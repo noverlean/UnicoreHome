@@ -71,5 +71,3 @@ UnicoreHome is a full-featured web and hardware application for managing smart h
 - Notifications for environment invitations
 - Notifications for new messages in support tickets
 - Email templates styled with FreeMarker
-
----
