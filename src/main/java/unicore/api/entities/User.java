@@ -1,11 +1,8 @@
 package unicore.api.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import java.sql.Date;
 import java.util.Collection;
 
 @Entity

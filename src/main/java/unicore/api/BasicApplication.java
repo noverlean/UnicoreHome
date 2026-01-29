@@ -2,13 +2,7 @@ package unicore.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.filter.CharacterEncodingFilter;
 import unicore.api.utils.FreeMaker;
-
-import java.util.Collections;
 
 @SpringBootApplication
 public class BasicApplication {

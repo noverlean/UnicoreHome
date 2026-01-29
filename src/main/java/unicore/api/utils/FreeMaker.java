@@ -3,13 +3,8 @@ package unicore.api.utils;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import lombok.val;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.HashMap;

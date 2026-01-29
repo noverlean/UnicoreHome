@@ -1,12 +1,8 @@
 package unicore.api.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.expression.spel.ast.OpAnd;
 import org.springframework.stereotype.Repository;
-import unicore.api.entities.Environment;
 import unicore.api.entities.Lightning;
-
-import java.util.Optional;
 
 @Repository
 public interface LightningRepository extends CrudRepository<Lightning, Long> {

@@ -1,4 +1,4 @@
-package unicore.api.service;
+package unicore.api.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -10,18 +10,16 @@ import unicore.api.entities.User;
 import unicore.api.repository.EnvironmentRepository;
 import unicore.api.repository.UserRepository;
 import unicore.api.senders.MailSender;
+import unicore.api.service.EnvironmentService;
 import unicore.api.utils.CodeGenerator;
 
 @Service
 @RequiredArgsConstructor
-public class EnvironmentService {
+public class EnvironmentServiceImpl implements EnvironmentService {
     private final EnvironmentRepository environmentRepository;
     private final UserRepository userRepository;
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
-//    public List<Environment> findByName(String name) {
-//        return environmentRepository.findByEmail(name);
-//    }
     public ResponseEntity<User> createNewEnvironment(String u_email, String env_name) {
         if (userRepository.findByEmail(u_email).get().getEnvironment() != null || environmentRepository.find(env_name, u_email).isPresent())
         {

@@ -2,7 +2,6 @@ package unicore.api.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import unicore.api.entities.Lightning;
 import unicore.api.entities.Switch;
 
 @Repository

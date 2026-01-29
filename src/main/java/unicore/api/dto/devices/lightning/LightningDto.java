@@ -1,9 +1,6 @@
 package unicore.api.dto.devices.lightning;
 
-import jakarta.persistence.Column;
 import lombok.*;
-
-import java.util.Date;
 
 @Data
 @AllArgsConstructor

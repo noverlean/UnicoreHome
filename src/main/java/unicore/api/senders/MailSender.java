@@ -8,8 +8,6 @@ import unicore.api.utils.FreeMaker;
 
 import java.util.Properties;
 
-import jakarta.mail.Session;
-
 public class MailSender {
     private static final String host="soulgoneofficial@gmail.com";
     private static final String user="soulgoneofficial@gmail.com";
